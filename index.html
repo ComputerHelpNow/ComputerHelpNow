@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Help Now | Fast, Reliable Tech Support & Repair</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0a0f1d;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1f293d;
+      --bg-card: rgba(17, 24, 39, 0.88);
+      
+      --accent-cyan: #00d2ff;
+      --accent-blue: #3a7bd5;
+      --accent-glow: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+      
+      --border: #243048;
+      --border-bright: #334155;
+      --border-glow: rgba(0, 210, 255, 0.35);
+
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      --shadow-glow: 0 0 35px rgba(0, 210, 255, 0.15);
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      color: var(--text-main);
+      background-color: var(--bg-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* Top Announcement Bar */
+    .top-banner {
+      background: #060a14;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.55rem 1rem;
+      font-size: 0.85rem;
+      text-align: center;
+      position: relative;
+      z-index: 101;
+    }
+    .top-banner a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-weight: 700;
+      margin-left: 0.4rem;
+    }
+    .top-banner a:hover {
+      text-decoration: underline;
+    }
+
+    /* Navigation */
+    header {
+      background: rgba(10, 15, 29, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 0.95rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      background: var(--accent-glow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.35rem;
+    }
+
+    .nav-phone {
+      font-weight: 700;
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .nav-phone:hover {
+      color: var(--accent-cyan);
+    }
+
+    .nav-cta {
+      background: var(--accent-glow);
+      color: #060a14;
+      padding: 0.65rem 1.35rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: 2.5rem 1.5rem 4.5rem;
+      text-align: center;
+      background: radial-gradient(circle at 50% 15%, rgba(0, 210, 255, 0.08) 0%, transparent 60%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-container {
+      max-width: 950px;
+      margin: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Featured Top Banner Container */
+    .hero-banner-wrapper {
+      width: 100%;
+      max-width: 900px;
+      max-height: 400px;
+      margin: 0 auto 2.5rem;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 15px 45px rgba(0, 210, 255, 0.15), 0 10px 25px rgba(0, 0, 0, 0.6);
+      position: relative;
+      background: #060a14;
+    }
+
+    .hero-banner-wrapper img {
+      width: 100%;
+      height: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(0, 210, 255, 0.08);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      color: var(--accent-cyan);
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      background: #00d2ff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #00d2ff;
+    }
+
+    .hero h1 {
+      font-size: 2.85rem;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 .highlight {
+      background: var(--accent-glow);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.65;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-glow);
+      color: #060a14;
+      padding: 0.95rem 2.1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
+      transition: all 0.2s ease;
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
+    }
+
+    .btn-phone {
+      background: rgba(31, 41, 61, 0.6);
+      color: #ffffff;
+      border: 1px solid var(--border-bright);
+      padding: 0.95rem 1.85rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-phone:hover {
+      background: rgba(31, 41, 61, 0.95);
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    /* Services Section */
+    .section {
+      max-width: 1150px;
+      margin: auto;
+      padding: 4.5rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.2rem;
+      position: relative;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(10px);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-glow);
+      box-shadow: 0 10px 30px -5px rgba(0, 210, 255, 0.15);
+    }
+
+    .card-icon-wrapper {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: rgba(0, 210, 255, 0.08);
+      border: 1px solid rgba(0, 210, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.65rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      background: none;
+      border: none;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0;
+      text-align: left;
+      transition: color 0.2s;
+    }
+
+    .card-link:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    /* Detail Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(6, 10, 20, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background: #111827;
+      border: 1px solid var(--border-bright);
+      width: 100%;
+      max-width: 680px;
+      max-height: 90vh;
+      border-radius: 16px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9);
+      position: relative;
+      overflow-y: auto;
+      padding: 2.25rem;
+      transform: translateY(20px) scale(0.97);
+      transition: all 0.25s ease;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: #1f293d;
+      border: 1px solid var(--border);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: #334155;
+      color: #ffffff;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-icon {
+      font-size: 2.25rem;
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      padding: 0.5rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .modal-subtitle {
+      color: var(--accent-cyan);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .modal-body p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .modal-checklist-title {
+      font-weight: 700;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-checklist {
+      list-style: none;
+      margin-bottom: 1.75rem;
+    }
+
+    .modal-checklist li {
+      padding: 0.4rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+
+    .modal-checklist li::before {
+      content: "✓";
+      color: var(--accent-cyan);
+      font-weight: 800;
+    }
+
+    .modal-cta-box {
+      background: #0d1322;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Process Section */
+    .process-box {
+      background: #0d1322;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3.5rem 2rem;
+      color: #fff;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-card);
+    }
+
+    .process-box .section-title h2 { color: #ffffff; }
+    .process-box .section-title p { color: var(--text-muted); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .step-badge {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      background: var(--accent-glow);
+      color: #060a14;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-size: 1.2rem;
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+    }
+
+    .steps-grid h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .steps-grid p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact Section */
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 3rem;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .contact-left h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+
+    .contact-left p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .phone-callout {
+      background: #0d1322;
+      border: 1px solid var(--border-bright);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .phone-callout strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
+    }
+
+    .phone-callout a {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .phone-callout a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--border-bright);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: #0d1322;
+      color: #ffffff;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+    }
+
+    .btn-submit {
+      background: var(--accent-glow);
+      color: #060a14;
+      border: none;
+      padding: 0.95rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(0, 210, 255, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0, 210, 255, 0.6);
+    }
+
+    .form-status {
+      display: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    /* Footer */
+    footer {
+      background: #060a14;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-banner-wrapper { max-height: 220px; }
+      .hero h1 { font-size: 2.1rem; }
+      .contact-card { grid-template-columns: 1fr; padding: 1.75rem; gap: 2rem; }
+      .nav-phone { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-banner">
+    Need immediate tech assistance? Call or text <a href="tel:9785669155">978-566-9155</a>
+  </div>
+
+  <!-- Main Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">⚡ ComputerHelp<span>Now</span></a>
+      <div class="nav-actions">
+        <a href="tel:9785669155" class="nav-phone">📞 978-566-9155</a>
+        <a href="#contact" class="nav-cta">Request Help</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+
+      <!-- Featured Image Banner -->
+      <div class="hero-banner-wrapper">
+        <img src="hero-bg.jpg" alt="Computer Help Now Logo & Office" />
+      </div>
+
+      <div class="badge">
+        <span class="badge-dot"></span> Remote & On-Site IT Specialists
+      </div>
+      <h1>Fast, Reliable Tech Support When You <span class="highlight">Need It Most.</span></h1>
+      <p>Computer running slow, locked out, or hit with a virus? Computer Help Now diagnoses and repairs computer and network problems with honest, hassle-free service.</p>
+      
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary">Book a Diagnostic</a>
+        <a href="tel:9785669155" class="btn-phone">📞 Call 978-566-9155</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="section-title">
+      <h2>Complete Tech Solutions</h2>
+      <p>Click on any service below to see the full scope and exact breakdown of what we do.</p>
+    </div>
+
+    <div class="grid">
+      <!-- Service 1 -->
+      <div class="card">
+        <div>
+          <div class="card-icon-wrapper">⚡</div>
+          <h3>Speed & Performance Tune-Up</h3>
+          <p>Eliminate sluggish boot times, resolve app freezing, and optimize OS system settings for peak responsiveness.</p>
+        </div>
+        <button class="card-link" onclick="openServiceModal('tuneup')">View Full Details & Checklist &rarr;</button>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="card">
+        <div>
+          <div class="card-icon-wrapper">📶</div>
+          <h3>Wi-Fi & Home Networking</h3>
+          <p>Eliminate dead zones, configure mesh routers, secure private networks, and connect tricky wireless printers.</p>
+        </div>
+        <button class="card-link" onclick="openServiceModal('wifi')">View Full Details & Checklist &rarr;</button>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="card">
+        <div>
+          <div class="card-icon-wrapper">💽</div>
+          <h3>Data Recovery & Backup</h3>
+          <p>Safeguard photos, documents, and business files with automated backup vaults and file restoration.</p>
+        </div>
+        <button class="card-link" onclick="openServiceModal('backup')">View Full Details & Checklist &rarr;</button>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="card">
+        <div>
+          <div class="card-icon-wrapper">🌐</div>
+          <h3>Remote Quick-Fix Support</h3>
+          <p>Fast, encrypted screen-share troubleshooting for email bugs, software glitches, and printer connectivity.</p>
+        </div>
+        <button class="card-link" onclick="openServiceModal('remote')">View Full Details & Checklist &rarr;</button>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="card">
+        <div>
+          <div class="card-icon-wrapper">🔧</div>
+          <h3>Hardware Upgrades & Repairs</h3>
+          <p>Supercharge older desktops and laptops with high-speed SSDs, RAM memory expansion, and hardware fixes.</p>
+        </div>
+        <button class="card-link" onclick="openServiceModal('hardware')">View Full Details & Checklist &rarr;</button>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="card">
+        <div>
+          <div class="card-icon-wrapper">🛡️</div>
+          <h3>Virus & Malware Removal</h3>
+          <p>Deep root-level disinfection to eradicate spyware, ad pop-ups, browser hijackers, and security risks.</p>
+        </div>
+        <button class="card-link" onclick="openServiceModal('security')">View Full Details & Checklist &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="process-box">
+      <div class="section-title">
+        <h2>Simple 3-Step Process</h2>
+        <p>Stress-free repairs from diagnosis to completion.</p>
+      </div>
+      <div class="steps-grid">
+        <div>
+          <div class="step-badge">1</div>
+          <h3>Contact Us</h3>
+          <p>Call, text, or submit your issue online.</p>
+        </div>
+        <div>
+          <div class="step-badge">2</div>
+          <h3>Quick Diagnosis</h3>
+          <p>We assess the issue and provide clear, upfront pricing.</p>
+        </div>
+        <div>
+          <div class="step-badge">3</div>
+          <h3>Issue Solved</h3>
+          <p>We resolve the problem remotely or on-site and verify everything works.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Request Section -->
+  <section class="section" id="contact">
+    <div class="contact-card">
+      <div class="contact-left">
+        <h3>Ready to get started?</h3>
+        <p>Fill out the form or give us a direct call to speak with a technician right away.</p>
+        
+        <div class="phone-callout">
+          <strong>Direct Line</strong>
+          <a href="tel:9785669155">978-566-9155</a>
+        </div>
+
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          ✓ Fast response times<br>
+          ✓ Upfront quotes before work begins<br>
+          ✓ Friendly, clear communication
+        </p>
+      </div>
+
+      <!-- Live Email Forwarding Form -->
+      <form class="contact-form" id="supportForm" action="https://formspree.io/f/dick.computerhelpnow@gmail.com" method="POST">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="Client Name" required placeholder="Jane Doe" />
+        </div>
+        <div class="form-group">
+          <label for="reply_email">Your Email Address</label>
+          <input type="email" id="reply_email" name="_replyto" required placeholder="jane@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone Number" required placeholder="978-555-0100" />
+        </div>
+        <div class="form-group">
+          <label for="service_type">Device / Service Requested</label>
+          <select id="service_type" name="Service Type">
+            <option value="Speed Up & Tune-Up">Speed Up & Tune-Up</option>
+            <option value="Wi-Fi & Home Networking">Wi-Fi & Home Networking</option>
+            <option value="Data Recovery & Backup">Data Recovery & Backup</option>
+            <option value="Remote Quick-Fix Support">Remote Quick-Fix Support</option>
+            <option value="Hardware Upgrade / SSD Replacement">Hardware Upgrade / SSD Replacement</option>
+            <option value="Virus & Malware Clean">Virus & Malware Clean</option>
+            <option value="Other / Not Sure">Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="issue">Describe What's Happening</label>
+          <textarea id="issue" name="Problem Description" rows="3" placeholder="Briefly describe what's happening..."></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="New Computer Help Now Support Request!" />
+
+        <button type="submit" class="btn-submit" id="submitBtn">Submit Support Request</button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Computer Help Now. Call us at <a href="tel:9785669155">978-566-9155</a>. All rights reserved.</p>
+  </footer>
+
+  <!-- Detail Modal Overlay -->
+  <div class="modal-overlay" id="serviceModal" onclick="closeServiceModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeServiceModal()">&times;</button>
+      
+      <div class="modal-header">
+        <div class="modal-icon" id="modalIcon">⚡</div>
+        <div>
+          <h3 class="modal-title" id="modalTitle">Service Name</h3>
+          <div class="modal-subtitle" id="modalCategory">Computer Help Now • Service Overview</div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <p id="modalDesc">Detailed description goes here.</p>
+        <div class="modal-checklist-title">What this service includes:</div>
+        <ul class="modal-checklist" id="modalList"></ul>
+
+        <div class="modal-cta-box">
+          <div>
+            <strong style="color: #ffffff; display: block; font-size: 0.95rem;">Need this service?</strong>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Call directly or submit your issue below.</span>
+          </div>
+          <a href="#contact" class="btn-primary" onclick="closeServiceModal()" style="padding: 0.6rem 1.25rem; font-size: 0.9rem;">Request Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('supportForm');
+    const statusDiv = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Sending Request...";
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          statusDiv.className = "form-status success";
+          statusDiv.innerText = "Thank you! Your request has been sent. We'll be in touch shortly.";
+          form.reset();
+        } else {
+          statusDiv.className = "form-status error";
+          statusDiv.innerText = "Oops! There was a problem submitting your request. Please call 978-566-9155 directly.";
+        }
+      } catch (error) {
+        statusDiv.className = "form-status error";
+        statusDiv.innerText = "Connection error. Please call 978-566-9155 directly.";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit Support Request";
+      }
+    });
+
+    const serviceData = {
+      tuneup: {
+        icon: "⚡",
+        title: "Speed Up & Comprehensive Tune-Up",
+        category: "Performance Optimization • PC & Mac",
+        desc: "Over time, operating systems collect fragmented registry files, unnecessary background processes, and bloated cache files that make opening programs feel painfully slow. Our comprehensive tune-up restores responsive, out-of-the-box speeds.",
+        items: [
+          "Elimination of slow boot times and unnecessary startup applications",
+          "Deep cache, junk file, and temporary system data purge",
+          "Registry integrity check and file system error repair",
+          "Thermal paste, fan ventilation, and background throttling inspection",
+          "Browser optimization, removing laggy extensions and tracking bloat",
+          "Windows / macOS operating system updates & driver patching"
+        ]
+      },
+      wifi: {
+        icon: "📶",
+        title: "Wi-Fi & Home Networking Support",
+        category: "Connectivity, Mesh Systems & Smart Devices",
+        desc: "Whether you suffer from frustrating signal drops in second-floor rooms or can't get your wireless printer to talk to your computer, we build stable, secure, and blazing-fast home network environments.",
+        items: [
+          "Diagnosis and fix for intermittent dropouts, buffering, and packet loss",
+          "Mesh Wi-Fi (e.g., eero, Nest, Orbi) installation and strategic node placement",
+          "Wireless printer setup, sharing configuration, and IP reservation",
+          "Network security hardening, guest network isolation, and WPA3 encryption",
+          "Smart TV, streaming box, and home office device pairing and signal boosting",
+          "Modem and ISP router optimization for maximum subscribed bandwidth"
+        ]
+      },
+      backup: {
+        icon: "💽",
+        title: "Data Recovery & Automated Backup",
+        category: "Data Protection, Photo Vaults & Hard Drive Recovery",
+        desc: "Losing family photos, business spreadsheets, or important documents is stressful. We specialize in retrieving critical data from failing machines and building set-it-and-forget-it automated backup routines.",
+        items: [
+          "File extraction from unbootable, crashed, or water-damaged computers",
+          "Recovery of accidentally deleted files, folders, and partition volumes",
+          "Setup of automated local external backups (Time Machine / Windows Backup)",
+          "Secure cloud storage sync configuration (OneDrive, Google Drive, iCloud)",
+          "Seamless file, email, and bookmark transfer to your new computer",
+          "Encrypted local vault configuration for sensitive tax and business records"
+        ]
+      },
+      remote: {
+        icon: "🌐",
+        title: "Remote Quick-Fix Support",
+        category: "Instant Screen-Share Diagnostics & Support",
+        desc: "Skip the drive and the hassle of disconnecting cables. With your explicit permission, we connect securely to your screen over the internet to fix email glitches, software errors, and device sync issues in real time.",
+        items: [
+          "Instant remote session setup—no complex tech knowledge required",
+          "Email client repair (Outlook, Apple Mail, Gmail synchronization errors)",
+          "Software installation, licensing activation, and configuration",
+          "Printer driver repairs, scanner pairing, and PDF export issues",
+          "100% encrypted, secure connection where you see every click made on screen",
+          "Session ends completely when you disconnect—no permanent backdoor access"
+        ]
+      },
+      hardware: {
+        icon: "🔧",
+        title: "Hardware Upgrades & Component Repairs",
+        category: "Solid State Drives (SSDs), RAM & Physical Upgrades",
+        desc: "Before you spend $1,000+ on a brand-new computer, a simple hardware upgrade can often make your current machine 5x to 10x faster for a fraction of the cost.",
+        items: [
+          "Solid State Drive (SSD) upgrade with 100% clone of your current desktop/files",
+          "RAM memory expansion for heavy multitasking and photo/video workflow",
+          "Power supply unit (PSU), graphics card (GPU), and motherboard replacement",
+          "Laptop battery replacement, charging port repair, and fan cleaning",
+          "Custom PC build consultations and component assembly",
+          "Safe physical dust removal and thermal management optimization"
+        ]
+      },
+      security: {
+        icon: "🛡️",
+        title: "Virus, Malware & Ransomware Removal",
+        category: "Security Hardening & Threat Eradication",
+        desc: "If your computer is bombarded with fake warning pop-ups, your browser redirects to weird search engines, or you suspect a phishing compromise, we perform root-level cleaning without wiping your personal photos or documents.",
+        items: [
+          "Deep heuristic scans to eradicate viruses, Trojans, ransomware, and worms",
+          "Removal of browser hijackers, aggressive adware, and rogue extensions",
+          "Operating system firewall configuration and anti-malware setup",
+          "Review of compromised passwords, email accounts, and security alerts",
+          "Removal of rogue remote access tools installed by phone scammers",
+          "Post-cleanup verification to ensure no hidden keyloggers remain"
+        ]
+      }
+    };
+
+    function openServiceModal(serviceKey) {
+      const data = serviceData[serviceKey];
+      if (!data) return;
+
+      document.getElementById('modalIcon').textContent = data.icon;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalCategory').textContent = data.category;
+      document.getElementById('modalDesc').textContent = data.desc;
+
+      const listContainer = document.getElementById('modalList');
+      listContainer.innerHTML = '';
+      data.items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        listContainer.appendChild(li);
+      });
+
+      document.getElementById('serviceModal').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeServiceModal(event) {
+      document.getElementById('serviceModal').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeServiceModal();
+    });
+  </script>
+</body>
+</html>
